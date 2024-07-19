@@ -1,4 +1,4 @@
-# manage_storehouse_flsask
+# Warehouse Management System_flsask
 Warehouse Management System
 This project is a Warehouse Management System developed using Python Flask. It allows users to efficiently manage warehouse operations, including inventory tracking, stock control, and order management.
 
