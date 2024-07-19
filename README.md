@@ -17,3 +17,4 @@ Flask-Bootstrap: For responsive and sleek UI.
 Werkzeug: A comprehensive WSGI web application library.
 HTML/CSS: For structuring and styling the web pages.
 JavaScript: For dynamic content and interactive features.
+![Screenshot 2024-07-19 224446](https://github.com/user-attachments/assets/e4c6728d-4736-4578-b7ae-90c6bd91780b)
