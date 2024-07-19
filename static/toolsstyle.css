@@ -1,0 +1,299 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    
+
+}
+
+.table {
+    width: 80%;
+    margin:  auto;
+    border-collapse: collapse;
+    border-radius: 10px; /* Adding border radius */
+    overflow: hidden; /* Ensure overflow is hidden to maintain border radius */
+    box-shadow: 0 0 25px rgba(50, 47, 47, 0.952); /* Optional: Add shadow for better depth */
+    background-color: #b3d0ec;
+
+}
+
+.table th, .table td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.table thead {
+    background-color: #197bdd;
+    color: #fff;
+}
+
+.table tbody tr {
+    border-bottom: 1px solid #ddd;
+}
+
+.table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.table tbody tr:last-of-type {
+    border-bottom: 2px solid    #343a40;
+}
+
+/* .table tbody tr:hover {
+    background-color: #e9ecef;
+} */
+
+.text-danger {
+    color: #dc3545;
+}
+
+.text-success {
+    color: #28a745;
+}
+
+.flash-messages {
+    position: fixed;
+    top: 39px;
+    left: 20px;
+    z-index: 1050;
+    width: 300px;
+}
+
+.flash-messages .alert {
+    margin-bottom: 0;
+}
+/* Modal Header */
+#editModal .modal-header {
+    background-color: #007bff; /* Blue header */
+    color: white;
+    border-bottom: 1px solid #dee2e6;
+}
+
+#editModal .modal-title {
+    font-size: 1.25rem; /* Larger title */
+}
+
+/* Modal Body */
+#editModal .modal-body {
+    padding: 1rem;
+}
+
+/* Modal Footer */
+#editModal .modal-footer {
+    border-top: 1px solid #dee2e6;
+}
+
+/* Form Inputs */
+#editModal input[type=text],
+#editModal input[type=number],
+#editModal textarea {
+    margin-bottom: 0.5rem;
+}
+
+#editModal textarea {
+    min-height: 100px; /* Adjust height of textarea */
+}
+
+/* Close Button */
+#editModal .modal-header .close {
+    color: white;
+    font-size: 1.5rem;
+}
+
+/* Submit Button */
+#editModal .modal-footer .btn-primary {
+    background-color: #28a745; /* Green button */
+    border-color: #28a745;
+}
+
+#editModal .modal-footer .btn-primary:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+/* Close Button (Secondary) */
+#editModal .modal-footer .btn-secondary {
+    background-color: #6c757d; /* Grey button */
+    border-color: #6c757d;
+}
+
+#editModal .modal-footer .btn-secondary:hover {
+    background-color: #5a6268; /* Darker grey on hover */
+}
+/* Edit Button */
+.btn-edit {
+    background-color: #ffc107; /* Yellow background */
+    color: #212529; /* Dark text color */
+    border-color: #ffc107; /* Yellow border */
+    font-size: 0.875rem; /* Font size */
+    padding: 0.25rem 0.75rem; /* Padding */
+}
+
+.btn-edit:hover {
+    background-color: #e0a800; /* Darker yellow on hover */
+    border-color: #e0a800; /* Darker border on hover */
+    color: #212529; /* Dark text color on hover */
+}
+
+.btn-edit:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.5); /* Yellow shadow on focus */
+}
+
+/* Delete Button */
+.btn-delete {
+    background-color: #dc3545; /* Red background */
+    color: #fff; /* White text color */
+    border-color: #dc3545; /* Red border */
+    font-size: 0.875rem; /* Font size */
+    padding: 0.25rem 0.75rem; /* Padding */
+}
+
+.btn-delete:hover {
+    background-color: #c82333; /* Darker red on hover */
+    border-color: #bd2130; /* Darker border on hover */
+    color: #fff; /* White text color on hover */
+}
+
+.btn-delete:focus {
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.5); /* Red shadow on focus */
+}
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
+body {
+    font-family: 'Cairo', sans-serif;
+    background-color: #eee;
+    margin: 0;
+    padding: 0;
+    direction: rtl; /* Ensures the layout is right-to-left */
+}
+
+h1 {
+    color: #343a40;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Modal Styles */
+.modal-content {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 25px rgba(50, 47, 47, 0.952); /* Adds shadow for better depth */
+    max-width: 800px; /* Change the width of the modal */
+    margin: 20px auto;
+    padding: 20px; /* Padding inside the modal content */
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.modal-title {
+    font-size: 20px;
+}
+
+.close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    line-height: 1;
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.close:hover {
+    opacity: 1;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 10px 0;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 10px;
+    border-top: 1px solid #dee2e6;
+    margin-top: 20px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+/* Error and Alert Styles */
+.text-danger {
+    color: #dc3545;
+    font-size: 14px;
+}
+
+.alert {
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: left; /* Change text direction to left */
+    direction: ltr; /* Ensure text inside alert is left-to-right */
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Flash Messages Styles */
+.flash-messages {
+    position: fixed;
+    top: 39px;
+    left: 20px;
+    z-index: 1050;
+    width: 300px;
+}
+
+.flash-messages .alert {
+    margin-bottom: 0;
+}

@@ -1,0 +1,153 @@
+{% extends "layout.html" %}
+{% block title %}قائمة الأدوات{% endblock %}
+{% block content %}
+<link href="{{ url_for('static', filename='toolsstyle.css') }}" rel="stylesheet">
+
+<h1>قائمة الأدوات</h1>
+
+{% if message %}
+<div class="flash-messages">
+    <div class="alert alert-{{ message_type }} mt-3">{{ message }}</div>
+</div>
+{% endif %}
+
+<table class="table table-striped table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>المعرف</th>
+            <th>الاسم</th>
+            <th>الكمية</th>
+            <th>الوصف</th>
+            <th>تاريخ الانتهاء</th>
+            <th>الحالة</th>
+            <th>الاستخدام</th>
+            <th>الصورة</th>
+            <th>الموقع</th>
+            <th>العمليات</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for tool in tools %}
+        <tr>
+            <td>{{ tool.id }}</td>
+            <td>{{ tool.name }}</td>
+            <td>{{ tool.quantity }}</td>
+            <td>{{ tool.description }}</td>
+            <td>{{ tool.expire_date }}</td>
+            <td class="{% if tool.status == 'expired' %}text-danger{% else %}text-success{% endif %}">{{ tool.status }}</td>
+            <td>{{ tool.usage }}</td>
+            <td>
+            {% if tool.photo %}
+            <img src="{{ url_for('static', filename='uploads/' ~ tool.photo) }}" alt="tool photo" width="50" height="50">
+            {% else %}
+            <span>لا توجد صورة</span>
+            {% endif %}
+            </td>
+            <td>{{ tool.storage_name }}</td>
+            <td>
+                <button class="btn btn-edit btn-sm"
+                data-toggle="modal"
+                data-target="#editModal"
+                data-id="{{ tool.id }}"
+                data-name="{{ tool.name }}"
+                data-quantity="{{ tool.quantity }}"
+                data-description="{{ tool.description }}"
+                data-expire_date="{{ tool.expire_date }}"
+                data-usage="{{ tool.usage }}"
+                data-storage_id="{{ tool.storage_id }}">
+                تعديل
+                </button>
+                
+                <a href="{{ url_for('delete_tool', tool_id=tool.id) }}" class="btn btn-delete btn-sm"
+                onclick="return confirm('هل أنت متأكد أنك تريد حذف هذه الأداة؟')">
+                حذف
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Edit Tool Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">تعديل الأداة</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="editToolForm" method="POST" action="{{ url_for('update_tool') }}" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <input type="hidden" name="id" id="edit-id">
+                    <div class="form-group">
+                        <label for="edit-name">الاسم</label>
+                        <input type="text" class="form-control" name="name" id="edit-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-quantity">الكمية</label>
+                        <input type="number" class="form-control" name="quantity" id="edit-quantity" required min="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-description">الوصف</label>
+                        <textarea class="form-control" name="description" id="edit-description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-expire_date">تاريخ الانتهاء</label>
+                        <input type="date" class="form-control" name="expire_date" id="edit-expire_date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-usage">الاستخدام</label>
+                        <select class="form-control" name="usage" id="edit-usage" required>
+                            <option value="غير مستخدم">غير مستخدم</option>
+                            <option value="طبيعي">طبيعي</option>
+                            <option value="ناقص">ناقص</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-photo">الصورة</label>
+                        <input type="file" class="form-control" name="photo" id="edit-photo">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-storage_id">الموقع</label>
+                        <select class="form-control" name="storage_id" id="edit-storage_id">
+                            {% for storage in storages %}
+                                <option value="{{ storage.storage_id }}">{{ storage.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">إغلاق</button>
+                    <button type="submit" class="btn btn-primary">حفظ التغييرات</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    $('#editModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); 
+        var id = button.data('id');
+        var name = button.data('name');
+        var quantity = button.data('quantity');
+        var description = button.data('description');
+        var expire_date = button.data('expire_date');
+        var usage = button.data('usage');
+        var storage_id = button.data('storage_id');
+
+        var modal = $(this);
+        modal.find('#edit-id').val(id);
+        modal.find('#edit-name').val(name);
+        modal.find('#edit-quantity').val(quantity);
+        modal.find('#edit-description').val(description);
+        modal.find('#edit-expire_date').val(expire_date);
+        modal.find('#edit-usage').val(usage);
+    });
+});
+</script>
+
+{% endblock %}

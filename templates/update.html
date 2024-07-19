@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block title %}تعديل الأداة{% endblock %}
+{% block content %}
+<link href="{{ url_for('static', filename='toolsstyle.css') }}" rel="stylesheet">
+
+<h1>تعديل الأداة</h1>
+
+<form id="editToolForm" method="POST" action="{{ url_for('updateTool') }}">
+  <input type="hidden" name="id" value="{{ tool.id }}">
+  <div class="form-group">
+    <label for="edit-name">الاسم</label>
+    <input type="text" class="form-control" name="name" id="edit-name" value="{{ tool.name }}" required>
+  </div>
+  <div class="form-group">
+    <label for="edit-quantity">الكمية</label>
+    <input type="number" class="form-control" name="quantity" id="edit-quantity" value="{{ tool.quantity }}" required min="1">
+  </div>
+  <div class="form-group">
+    <label for="edit-description">الوصف</label>
+    <textarea class="form-control" name="description" id="edit-description">{{ tool.description }}</textarea>
+  </div>
+  <div class="form-group">
+    <label for="edit-expire_date">تاريخ الانتهاء</label>
+    <input type="date" class="form-control" name="expire_date" id="edit-expire_date" value="{{ tool.expire_date }}" required>
+  </div>
+  <button type="submit" class="btn btn-primary">حفظ التغييرات</button>
+  <a href="{{ url_for('tools') }}" class="btn btn-secondary">إلغاء</a>
+</form>
+{% endblock %}

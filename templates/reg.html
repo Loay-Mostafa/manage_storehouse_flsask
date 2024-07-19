@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+{% block title %}تسجيل أداة{% endblock %}
+{% block content %}
+<link href="{{ url_for('static', filename='regstyle.css') }}" rel="stylesheet">
+
+<h1>إضافة أداة جديدة</h1>
+
+{% if message %}
+  <div class="flash-messages">
+    <div class="alert alert-{{ message_type }} mt-3">{{ message }}</div>
+  </div>
+{% endif %}
+
+<form action="{{ url_for('register_tool') }}" method="post" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+
+    <div class="row mt-3">
+        <div class="col-md-4">
+            {{ form.id.label }}<br>
+            {{ form.id(class_="form-control") }}<br>
+            {% for error in form.id.errors %}
+                <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <div class="col-md-4">
+            {{ form.name.label }}<br>
+            {{ form.name(class_="form-control") }}<br>
+            {% for error in form.name.errors %}
+                <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <div class="col-md-4">
+            {{ form.quantity.label }}<br>
+            {{ form.quantity(class_="form-control") }}<br>
+            {% for error in form.quantity.errors %}
+                <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="form-group mt-3">
+        {{ form.description.label }}<br>
+        {{ form.description(class_="form-control") }}<br>
+        {% for error in form.description.errors %}
+            <div class="text-danger">{{ error }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="form-group mt-3">
+        {{ form.expire_date.label }}<br>
+        {{ form.expire_date(class_="form-control") }}<br>
+        {% for error in form.expire_date.errors %}
+            <div class="text-danger">{{ error }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="form-group mt-3">
+        {{ form.photo.label }}<br>
+        {{ form.photo(class_="form-control") }}<br>
+        {% for error in form.photo.errors %}
+            <div class="text-danger">{{ error }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="form-group mt-3">
+        {{ form.storage_id.label }}<br>
+        {{ form.storage_id(class_="form-control") }}<br>
+        {% for error in form.storage_id.errors %}
+            <div class="text-danger">{{ error }}</div>
+        {% endfor %}
+    </div>
+    <div class="col-md-4">
+        {{ form.min.label }}<br>
+        {{ form.min(class_="form-control") }}<br>
+        {% for error in form.min.errors %}
+            <div class="text-danger">{{ error }}</div>
+        {% endfor %}
+    </div>
+</div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">تسجيل الأداة</button>
+    </div>
+</form>
+{% endblock %}

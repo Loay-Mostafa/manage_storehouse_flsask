@@ -1,0 +1,7 @@
+
+Flask==2.3.2
+pymysql==1.0.3
+Flask-WTF==1.1.1
+WTForms==3.0.1
+Flask-Bootstrap==3.3.7.1
+Werkzeug==2.3.7
